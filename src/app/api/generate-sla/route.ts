@@ -20,13 +20,15 @@ export async function POST(req: Request) {
       success: true,
       data: response,
     });
-  } catch (error) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Failed to generate SLA",
-      },
-      { status: 500 }
-    );
-  }
+  }catch (error: any) {
+  console.error(error);
+
+  return NextResponse.json(
+    {
+      success: false,
+      error: error?.message || "Unknown error",
+    },
+    { status: 500 }
+  );
+}
 }
