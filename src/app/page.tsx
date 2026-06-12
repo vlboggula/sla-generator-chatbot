@@ -31,11 +31,11 @@ export default function Home() {
   }
 
   async function testSupabaseInsert() {
-    const { error } = await supabase.from("sla_sessions").insert([
-      {
-        session_name: "Test Session",
-      },
-    ]);
+  const { error } = await supabase.from("sla_sessions").insert([
+  {
+    user_input: "Test Session",
+  },
+]);
 
     if (error) {
       setMessage("Supabase Insert Error: " + error.message);
